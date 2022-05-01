@@ -1,0 +1,46 @@
+﻿@model List<UsuarioViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de usuários</h2>
+
+<a href="/usuario/create" class="btn btn-info">Novo Registro</a>
+<br />
+<br />
+
+<table class="table table-responsive">
+    <tr>
+        <th>Ações</th>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Usuário</th>
+        <th>Senha</th>
+        <th>Foto</th>
+    </tr>
+
+    @foreach (UsuarioViewModel usuario in Model)
+    {
+        <tr>
+            <td>
+                <a href="/usuario/Edit?id=@usuario.Id">Editar</a>
+                <br>
+                <a href="javascript:apagarUsuario(@usuario.Id)">Apagar</a>
+            </td>
+            
+            <td>@usuario.Id</td>
+            <td>@usuario.Nome</td>
+            <td>@usuario.Usuario</td>
+            <td>@usuario.Senha</td>
+            <td>@usuario.Foto</td>
+        </tr>
+    }
+</table>
+
+<script>
+ function apagarUsuario(id)
+ {
+ if (confirm('Confirma a exclusão do registro?'))
+ location.href = 'usuario/Delete?id=' + id;
+ }
+</script>

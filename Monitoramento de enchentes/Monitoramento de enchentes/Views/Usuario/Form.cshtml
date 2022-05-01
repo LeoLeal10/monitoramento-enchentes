@@ -1,0 +1,46 @@
+﻿@model UsuarioViewModel
+@{
+ Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Cadastro de Usuário</h2>
+
+<form action="Save" method="post">
+    <input type="hidden" name="Operacao" value="@ViewBag.Operacao" />
+
+    <label for="id" class="control-label">ID</label>
+
+    @if (ViewBag.Operacao == "I")
+    {
+        <input type="number" Name="id" value="@Model.Id" class="form-control" />
+    }
+    else
+    {
+        <input type="number" Name="id" value="@Model.Id" class="form-control disabled" readonly />
+    }
+    <span asp-validation-for="Id" class="text-danger"></span>
+
+    <br />
+
+    <label for="Nome" class="control-label">Nome</label>
+    <input type="text" Name="Nome" value="@Model.Nome" class="form-control" />
+    <span asp-validation-for="Nome" class="text-danger"></span>
+    <br />
+
+    <label for="Usuario" class="control-label">Usuário</label>
+    <input type="text" Name="Usuario" value="@Model.Usuario class="form-control" />
+    <span asp-validation-for="Usuario" class="text-danger"></span>
+    <br />
+
+    <label for="Senha" class="control-label">Senha</label>
+    <input type="text" Name="Senha" value="@Model.Senha" class="form-control" />
+    <span asp-validation-for="Senha" class="text-danger"></span>
+    <br />
+
+    <label for="Foto" class="control-label">Foto</label>
+    <input type="text" Name="Foto" value="@Model.Foto" class="form-control" />
+    <span asp-validation-for="Foto" class="text-danger"></span>
+    <br />
+
+    <input type="submit" value="Salvar dados" class="btn btn-success" />
+    <br />
+</form>
